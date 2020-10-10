@@ -41,14 +41,15 @@ def get_user_projects(user_id: str) -> list:
                                'sort': 'asc',
                                'membership': 'true'
                            })
-
-    while resp := get_projects_list(id_after).json():
+    resp = get_projects_list(id_after).json()
+    while resp:
         if not isinstance(resp, list):
             break
         if len(resp) == 0:
             break
         projects += resp
         id_after = projects[-1]['id']
+        resp = get_projects_list(id_after).json()
     return projects
 
 
