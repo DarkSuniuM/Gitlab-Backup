@@ -1,5 +1,6 @@
 """Configuration file."""
 
+import os
 from urllib.parse import quote
 
 # Get from https://gitlab.com/profile/personal_access_tokens, Give all permissions
@@ -18,7 +19,7 @@ PASSWORD = quote('')
 BASE_URL = 'https://gitlab.com/api/v4/'
 
 # Path to save your repositories URLs
-URLS_EXPORT_PATH = './repos.txt'
+URLS_EXPORT_PATH = os.path.normpath(os.path.abspath('./repos.txt'))
 
 # Path to clone your repositories
-BACKUP_DIR = './backup'
+BACKUP_DIR = os.path.normpath(os.path.abspath('./backup'))
